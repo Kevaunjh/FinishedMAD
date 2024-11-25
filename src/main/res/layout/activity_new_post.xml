@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#ABBCE1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPost">
+
+    <!-- Header -->
+    <TextView
+        android:id="@+id/CreateHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="New Post"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Back Button -->
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Back Button"
+        android:src="@drawable/back_button"
+        android:onClick="moveBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Image Placeholder -->
+    <ImageView
+        android:id="@+id/imageCreatePost"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/dashed_border"
+        android:contentDescription="Image Placeholder"
+        android:onClick="selectImage"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/CreateHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Image Placeholder Text -->
+    <TextView
+        android:id="@+id/imagePlaceholderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click to add an image"
+        android:textColor="#808080"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@+id/imageCreatePost"
+        app:layout_constraintBottom_toBottomOf="@+id/imageCreatePost"
+        app:layout_constraintStart_toStartOf="@+id/imageCreatePost"
+        app:layout_constraintEnd_toEndOf="@+id/imageCreatePost" />
+
+    <!-- Post Title Input -->
+    <EditText
+        android:id="@+id/nameCreatePost"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/rounded_edittext_background"
+        android:hint="Post Title"
+        android:inputType="text"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/imageCreatePost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Post Description Input -->
+    <EditText
+        android:id="@+id/descriptionCreatePost"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/rounded_edittext_background"
+        android:gravity="start|top"
+        android:hint="Post Description"
+        android:inputType="textMultiLine"
+        android:minHeight="150dp"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/nameCreatePost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Latitude and Longitude Section -->
+    <LinearLayout
+        android:id="@+id/locationInputSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/rounded_edittext_background"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/descriptionCreatePost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Latitude Input -->
+        <EditText
+            android:id="@+id/latitudeInput"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="Enter Latitude"
+            android:inputType="numberDecimal|numberSigned"
+            android:padding="12dp" />
+
+        <!-- Longitude Input -->
+        <EditText
+            android:id="@+id/longitudeInput"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="Enter Longitude"
+            android:inputType="numberDecimal|numberSigned"
+            android:padding="12dp"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- Confirm and Cancel Buttons -->
+    <LinearLayout
+        android:id="@+id/actionButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/tabbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Confirm Button -->
+        <Button
+            android:id="@+id/confirmCreatePost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Create Post" />
+
+        <!-- Cancel Button -->
+        <Button
+            android:id="@+id/cancelCreatePost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Cancel" />
+    </LinearLayout>
+
+    <!-- Toolbar at the bottom -->
+    <LinearLayout
+        android:id="@+id/tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#ABBCE1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+
+        <ImageButton
+            android:id="@+id/icon1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Home Icon"
+            android:scaleType="centerInside"
+            android:src="@drawable/home" />
+
+        <ImageButton
+            android:id="@+id/icon2"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Search Icon"
+            android:scaleType="centerInside"
+            android:src="@drawable/search" />
+
+        <ImageButton
+            android:id="@+id/icon3"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Create Icon"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/create" />
+
+        <ImageButton
+            android:id="@+id/icon4"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Bell Icon"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/bell" />
+
+        <ImageButton
+            android:id="@+id/icon5"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="User Icon"
+
+            android:scaleType="centerInside"
+            android:src="@drawable/user" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
